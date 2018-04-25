@@ -177,8 +177,22 @@ function islandora_exhibits_browse_callback($path) {
   $timeline_js = drupal_get_path('module', 'islandora_exhibits_browse') . '/js/timeline.js';
   drupal_add_js($timeline_js);
 
-  $slideshow_css = drupal_get_path('module', 'islandora_exhibits_browse') . '/css/slideshow.css';
-  drupal_add_css($slideshow_css); 
+  $slick_css = variable_get('islandora_exhibits_browse_slideshow_slick_css', FALSE);
+  $slick_css_theme = variable_get('islandora_exhibits_browse_slideshow_slick_css_theme', FALSE);
+
+  if ($slick_css == TRUE) {
+     $slick_css_file = drupal_get_path('module', 'islandora_exhibits_browse') . '/js/slick/slick.css';
+     drupal_add_css($slick_css_file);
+  } else {
+     $slideshow_css = drupal_get_path('module', 'islandora_exhibits_browse') . '/css/slideshow.css';
+     drupal_add_css($slideshow_css);
+  }
+
+  if ($slick_css_theme == TRUE) {
+     $slick_css_theme_file = drupal_get_path('module', 'islandora_exhibits_browse') . '/js/slick/slick-theme.css';
+     drupal_add_css($slick_css_theme_file);
+  }
+
   $slideshow_js = drupal_get_path('module', 'islandora_exhibits_browse') . '/js/slick/slick.min.js';
   drupal_add_js($slideshow_js);
   
