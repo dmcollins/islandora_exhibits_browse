@@ -17,6 +17,8 @@ function islandora_exhibits_browse_admin_settings($form, &$form_state) {
   // Fields.
   global $base_url;   // Will point to http://www.example.com
   $page_prefix = variable_get('islandora_exhibits_browse_page_prefix', 'exhibits');
+  $slick_css = variable_get('islandora_exhibits_browse_slideshow_slick_css', FALSE);
+  $slick_css_theme = variable_get('islandora_exhibits_browse_slideshow_slick_css_theme', FALSE);
   $link = $base_url . '/' . $page_prefix . '/yourpath';
   $form['exhibits_pages']['islandora_exhibits_browse_fields_data'] = array(
     '#type' => 'item',
@@ -82,14 +84,14 @@ function islandora_exhibits_browse_admin_settings($form, &$form_state) {
         'islandora_exhibits_browse_slideshow_css' => array(
            '#type' => 'checkbox',
            '#title' => t('Use Slick.js default CSS'),
-           '#default_value' => FALSE,
+           '#default_value' => $slick_css,
            '#description' => t('Use default CSS included with Slick.js to allow for full use of Slick.js setting.' . 
               '<br>WARNING: This has theme and display implications that may cause Slideshows to display incorrectly unless you have modified your site theme CSS to compensate.'),
         ),
         'islandora_exhibits_browse_slideshow_css_theme' => array(
            '#type' => 'checkbox',
            '#title' => t('Use Slick.js default Theme CSS'),
-           '#default_value' => FALSE,
+           '#default_value' => $slick_css_theme,
            '#description' => t('Use default CSS theme included with Slick.js.' . 
               '<br>WARNING: This has theme and display implications that may cause Slideshows to display incorrectly unless you have modified your site theme CSS to compensate.'),
         ),  
@@ -199,6 +201,8 @@ function islandora_exhibits_browse_admin_settings_submit($form, &$form_state) {
   }
   variable_set('islandora_exhibits_browse_fields_data', $fields_data);
   variable_set('islandora_exhibits_browse_page_prefix', $form_state['values']['page_prefix']);
+  variable_set('islandora_exhibits_browse_slideshow_slick_css', $form_state['values']['islandora_exhibits_browse_slideshow_css']);
+  variable_set('islandora_exhibits_browse_slideshow_slick_css_theme', $form_state['values']['islandora_exhibits_browse_slideshow_css_theme']);
 
   drupal_set_message(t('The configuration options have been saved.'));
 }
