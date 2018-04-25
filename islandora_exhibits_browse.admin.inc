@@ -71,6 +71,31 @@ function islandora_exhibits_browse_admin_settings($form, &$form_state) {
      '#default_value' => $page_prefix,
   );
 
+  $form['exhibits_slick'] = array(
+     'exhibits_slick_fieldset' => array(
+        '#type' => 'fieldset',
+        '#title' => t('Exhibits Slideshow CSS and JS Configuration'),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#description' => t('These settings allow for advanced configuration of Exhibits Slideshows by exposing the full functionality of Slick.' .
+           '<br>For further information on configuring Slick, see: ') . l('http://kenwheeler.github.io/slick/', 'http://kenwheeler.github.io/slick/'),
+        'islandora_exhibits_browse_slideshow_css' => array(
+           '#type' => 'checkbox',
+           '#title' => t('Use Slick.js default CSS'),
+           '#default_value' => FALSE,
+           '#description' => t('Use default CSS included with Slick.js to allow for full use of Slick.js setting.' . 
+              '<br>WARNING: This has theme and display implications that may cause Slideshows to display incorrectly unless you have modified your site theme CSS to compensate.'),
+        ),
+        'islandora_exhibits_browse_slideshow_css_theme' => array(
+           '#type' => 'checkbox',
+           '#title' => t('Use Slick.js default Theme CSS'),
+           '#default_value' => FALSE,
+           '#description' => t('Use default CSS theme included with Slick.js.' . 
+              '<br>WARNING: This has theme and display implications that may cause Slideshows to display incorrectly unless you have modified your site theme CSS to compensate.'),
+        ),  
+     ),
+  );
+
   $form['buttons']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save'),
