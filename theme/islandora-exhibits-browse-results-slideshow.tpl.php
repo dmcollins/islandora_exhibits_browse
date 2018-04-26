@@ -83,80 +83,20 @@
 <style>
 
 .slick-slider {
-  text-align: center;
 <?php
+  $slick_css = variable_get('islandora_exhibits_browse_slideshow_slick_css', FALSE);
+  if ($slick_css == FALSE) {
   echo "width:$w;";
+  }
 ?>
 }
 
 .slick-slide {
 <?php
+  if ($slick_css == FALSE) {
   echo "height:$h;";
+  }
 ?>
-  width: 100%;
-}
-
-.slick-slide .content {
-  width: 100%;
-}
-
-.slick-slide img {
-  height: 100%;
-  margin:auto;
-}
-
-.slick-prev {
-  display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    opacity: 0.5;
-    margin-top: 8px!important;
-    margin-left: 5px!important;
-}
-
-.slick-next {
-  float: right;
-  position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 100;
-    opacity: 0.5;
-    margin-top: 8px!important;
-    margin-right: 5px!important;
-}
-
-.slick-prev:hover, .slick-next:hover  {
-  opacity: 1;
-}
-
-.slick-slider ul li {
-  list-style: none;
-  float: left;
-}
-
-.slick-slider .slick-dots {
-  display: inline-block;
-}
-
-.slick-slide .caption {
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    z-index: 100;
-    bottom: 0;
-    width: 100%;
-    padding: 8px;
-}
-
-.slick-slide .title a {
-  color: #fff!important;
-  font-weight: bold;
-}
-
-.slick-slide .description {
-  color: #fff!important;
 }
 
 </style>  
